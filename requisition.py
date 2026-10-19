@@ -1,32 +1,41 @@
-class Requisition:
-
+class requisition:
     requisition_counter = 10000
-    requisitions = []
 
-    # Initialise requisition information
-    def __init__(self, date, staff_id, staff_name):
-        Requisition.requisition_counter = Requisition.requisition_counter + 1
-
-        self.date = date
+    def __init__(self, staff_id):
+        requisition.requisition_counter +=1
         self.staff_id = staff_id
-        self.staff_name = staff_name
-        self.requisition_id = Requisition.requisition_counter
-
+        self.requisition_id = requisition.requisition_counter
         self.items = []
         self.total = 0
         self.status = "Pending"
-        self.approval_reference = "Not available"
+        self.approval_reference = "Pending Approval"
 
-        Requisition.requisitions.append(self)
+    def cal_requisition(self, item_name, quantity, price):
+        item_total = quantity * price
+        item = {
+            "name": item_name,
+            "quantity": quantity,
+            "price": price,
+            "total": item_total
+        }
 
-    # Task 1: Add items and calculate the total
-    def add_requisition(self, items):
-        self.items = items
-        self.total = 0
+        self.items.append(item)
+        self.total += item_total
 
-        for item in self.items:
-            self.total = self.total + item[1]
+    def check_approval(self):
+        if self.total < 500:
+            self.status = "Approved"
+            self.approval_reference = "APR-" + str(self.requisition_id)
+        else:
+            self.status = "Pending"
+            self.approval_reference = "Pending Approval"
 
-        return self.total
 
-    
+r1 = requisition("S001")
+r1.cal_requisition("Key", 2, 10)
+r1.check_approval()
+
+
+print(r1.total)
+print("Status:", r1.status)
+print("Reference:", r1.approval_reference)
