@@ -17,7 +17,7 @@ class Requisition:
 
         Requisition.all_requisitions.append(self)
 
-    # Add items and calculate total
+    ### Add items and calculate total
     def cal_requisition(self, item_name, quantity, price):
         item_total = quantity * price
 
@@ -31,7 +31,7 @@ class Requisition:
         self.items.append(item)
         self.total += item_total
 
-    # Check Automatic Approvals
+   ## # Check Automatic Approvals
     def check_approval(self):
         if self.total < 500:
             self.status = "Approved"
@@ -103,7 +103,7 @@ class Requisition:
         print("Not approved requisitions:", not_approved)
 
 
-# FIVE REQUISITIONS
+##### FIVE REQUISITIONS
 
 
 # Requisition .1
