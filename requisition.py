@@ -77,39 +77,30 @@ class Requisition:
         print("Approval Reference Number:", self.approval_reference)
 
         # Display req
-        @classmethod
-        def display_all_requisitions(cls):
-            for requisition in cls.all_requisitions:
-                requisition.display_requisition()
+            # Display all requisitions
+    def display_all_requisitions(self):
+        for requisition in self.all_requisitions:
+            requisition.display_requisition()
 
     # Display requisition statistics
-    @classmethod
-    def requisition_statistics(cls):
-        total_count = len(cls.all_requisitions)
-        approved_count = 0
-        pending_count = 0
-        not_approved_count = 0
+    def requisition_statistics(self):
+        approved = 0
+        pending = 0
+        not_approved = 0
 
-        for requisition in cls.all_requisitions:
-
+        for requisition in self.all_requisitions:
             if requisition.status == "Approved":
-                approved_count += 1
-
+                approved += 1
             elif requisition.status == "Pending":
-                pending_count += 1
-
-            elif requisition.status == "Not approved":
-                not_approved_count += 1
+                pending += 1
+            else:
+                not_approved += 1
 
         print("\nDisplaying the Requisition Statistics\n")
-
-        print("The total number of Requisitions submitted:", total_count)
-
-        print("The total number of Approved requisitions:", approved_count)
-
-        print("The total number of Pending Requisitions:", pending_count)
-
-        print("The total number of not Approved Requisitions:", not_approved_count)
+        print("Total requisitions:", len(self.all_requisitions))
+        print("Approved requisitions:", approved)
+        print("Pending requisitions:", pending)
+        print("Not approved requisitions:", not_approved)
 
 
 # FIVE REQUISITIONS
@@ -149,4 +140,5 @@ for requisition in Requisition.all_requisitions:
 
 
 # Display Statistics-------------------------
-Requisition.requisition_statistics()
+r1.display_all_requisitions()
+r1.requisition_statistics()
