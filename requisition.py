@@ -103,13 +103,13 @@ class Requisition:
 
         print("\nDisplaying the Requisition Statistics\n")
 
-        print("The tot number of Requisitions submitted:", total_count)
+        print("The total number of Requisitions submitted:", total_count)
 
-        print("The tot number of Approved requisitions:", approved_count)
+        print("The total number of Approved requisitions:", approved_count)
 
-        print("The tot number of Pending Requisitions:", pending_count)
+        print("The total number of Pending Requisitions:", pending_count)
 
-        print("The tot number of not Approved Requisitions:", not_approved_count)
+        print("The total number of not Approved Requisitions:", not_approved_count)
 
 
 # FIVE REQUISITIONS
@@ -148,5 +148,5 @@ for requisition in Requisition.all_requisitions:
     requisition.display_requisition()
 
 
-# Display statistics-------------------------
+# Display Statistics-------------------------
 Requisition.requisition_statistics()
